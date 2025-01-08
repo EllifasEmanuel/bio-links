@@ -59,7 +59,10 @@
         "test": [
             "@php artisan migrate:fresh",
             "@php ./vendor/bin/pest"
-        ]
+        ],
+        "pint": "@php ./vendor/bin/pint --test",
+        "pint:fix": "@php ./vendor/bin/pint",
+        "pint:changes": "@php ./vendor/bin/pint --dirty"
     },
     "extra": {
         "laravel": {
