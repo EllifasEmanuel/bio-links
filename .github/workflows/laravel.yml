@@ -34,10 +34,11 @@ jobs:
           echo -e "Start MYSQL service, it is off by default\n"
           sudo systemctl enable mysql.service
           sudo systemctl start mysql.service
+          echo -e "[client]\nuser=root\npassword=root\nhost=127.0.0.1" > ~/.my.cnf
           echo -e "Creating Kali Database\n"
-          mysql --host 127.0.0.1 -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS new_kali;'
+          mysql --defaults-file=~/.my.cnf -e 'CREATE DATABASE IF NOT EXISTS new_kali;'
           echo -e "Check new settings\n"
-          mysql --host 127.0.0.1 -uroot -proot -e "SELECT @@global.secure_file_priv, @@global.local_infile"
+          mysql --defaults-file=~/.my.cnf -e "SELECT @@global.secure_file_priv, @@global.local_infile"
       - name: Execute check via laravel Pint
         run: composer pint
       - name: Execute tests (Unit and Feature tests) via PHPUnit
