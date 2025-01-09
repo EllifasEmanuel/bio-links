@@ -13,7 +13,7 @@ services:
 
     mysql:
         container_name: mysql
-        platform: 'linux/x86_64'
+        platform: linux/x86_64
         image: mysql:latest
         restart: unless-stopped
         environment:
@@ -36,6 +36,11 @@ services:
             - '8999:80'
         depends_on:
             - mysql
+        networks:
+            - app-study
+
+    redis:
+        image: redis:latest
         networks:
             - app-study
 
