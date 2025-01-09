@@ -39,6 +39,8 @@ jobs:
           mysql --defaults-file=~/.my.cnf -e 'CREATE DATABASE IF NOT EXISTS new_kali;'
           echo -e "Check new settings\n"
           mysql --defaults-file=~/.my.cnf -e "SELECT @@global.secure_file_priv, @@global.local_infile"
+      - name: Redis Server in GitHub Actions
+        uses: supercharge/redis-github-action@1.8.0
       - name: Execute check via laravel Pint
         run: composer pint
       - name: Execute tests (Unit and Feature tests) via PHPUnit
