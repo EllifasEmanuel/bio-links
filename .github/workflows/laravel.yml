@@ -41,9 +41,9 @@ jobs:
           mysql --defaults-file=~/.my.cnf -e "SELECT @@global.secure_file_priv, @@global.local_infile"
       - name: Redis Server in GitHub Actions
         uses: supercharge/redis-github-action@1.8.0
-      - name: Execute check via laravel Pint
+      - name: Execute pint
         run: composer pint
-      - name: Execute tests (Unit and Feature tests) via PHPUnit
+      - name: Execute tests
         env:
           DB_HOST: 127.0.0.1
         run: php artisan test
