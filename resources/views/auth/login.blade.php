@@ -5,7 +5,7 @@
         <p>{{ $message }}</p>
     @endif
 
-    <form action="/login" method="post">
+    <form action="{{route('login')}}" method="post">
         @csrf
 
         <div>
