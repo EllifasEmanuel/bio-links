@@ -19,12 +19,12 @@ class Link extends Model
 
     public function moveUp(): void
     {
-        $this->move(+1);
+        $this->move(-1);
     }
 
     public function moveDown(): void
     {
-        $this->move(-1);
+        $this->move(+1);
     }
 
     private function move(int $to): void
@@ -32,7 +32,7 @@ class Link extends Model
         $order = $this->sort;
         $newOrder = $this->sort + $to;
 
-        $swapWith = $this->user()->links()
+        $swapWith = $this->user->links()
             ->where('sort', $newOrder)
             ->first();
 
